@@ -1,2 +1,2 @@
-# sem-3-wt-mp
+# HumanCPU
 Sem-3 Web Technologies Mini Project Collaborative Repo
