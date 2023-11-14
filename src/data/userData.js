@@ -1,6 +1,6 @@
 export const users = [
     {
-        name : "Mike",
+        name : "Andrew",
         profileIcon : "https://randomuser.me/api/portraits/men/43.jpg"  
     },
 ]

@@ -1,8 +1,5 @@
     import React, { useState } from 'react';
-
-    const GREY = '#DBE2E9';
-    const SKY_BLUE = '#00AEEF';
-    const BUBBLEGUM_PINK = '#FC8EAC'
+    import { colors } from '../styles/colors';
 
     export default function TestSelectionCards() {
         // const history = useHistory();
@@ -29,25 +26,22 @@
         const styles = {
             parentContainer: {
                 position: 'relative',
-                display: 'flex',  // Use flex display
-                flexDirection: 'row',  // Arrange items horizontally
-                justifyContent: 'space-between', // Optional: Adjust spacing between items
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
                 alignItems: 'center',
                 width: 1150,
                 height: 'auto',
                 margin: 120,
-                // backgroundColor: 'red',
-                marginLeft: 55
+                margin: 40
             },
             card: {
                 width: 250,
                 height: 250,
                 borderRadius: 25,
-                backgroundColor: cardHover ? BUBBLEGUM_PINK : GREY,
                 alignItems: 'center',
-                textAlign: 'center', // Center text inside the cards
-                transition: 'transform 0.3s ease', // Add transition for smooth animation
-                transform: cardHover ? 'translateY(-10px)' : 'translateY(0)', // Apply animation
+                textAlign: 'center',
+                boxShadow: '0 4px 15px -5px rgba(0, 0, 0, 0.7)',
             },
             cardIcon: {
                 position: 'relative',
@@ -59,7 +53,7 @@
                 marginTop: 5,
                 fontSize: 25,
                 fontWeight: '700',
-                color: SKY_BLUE,
+                color: colors.SKY_BLUE,
             },
             cardSubTitle: {
                 margin: 15,
@@ -67,7 +61,7 @@
                 marginTop: 10,
                 fontSize: 18,
                 fontWeight: '600',
-                color: SKY_BLUE 
+                color: colors.SKY_BLUE 
             }
         }
 
@@ -79,7 +73,15 @@
                 <div
                 style={{
                     ...styles.card,
-                    backgroundColor: cardHover.card1 ? BUBBLEGUM_PINK : GREY,
+                    backgroundColor: cardHover.card1 ? colors.DARK_GREY : colors.GREY,
+                    boxShadow: cardHover.card1
+                    ? '0 4px 25px 0 rgba(0, 0, 0, 0.7)'
+                    : '0 4px 15px -5px rgba(0, 0, 0, 0.7)',
+                    transition: 'box-shadow 0.3s ease',
+                    transform: cardHover.card1
+                    ? 'translateY(-10px)'
+                    : 'translateY(0)',
+                    transition: 'transform 0.3s ease',
                 }}
                 onMouseEnter={() => handleCardHover('card1')}
                 onMouseLeave={() => handleCardLeave('card1')}
@@ -101,10 +103,18 @@
                 <div
                 style={{
                     ...styles.card,
-                    backgroundColor: cardHover.card4 ? BUBBLEGUM_PINK : GREY,
+                    backgroundColor: cardHover.card2 ? colors.DARK_GREY : colors.GREY,
+                    boxShadow: cardHover.card2
+                    ? '0 4px 25px 0 rgba(0, 0, 0, 0.7)'
+                    : '0 4px 15px -5px rgba(0, 0, 0, 0.7)',
+                    transition: 'box-shadow 0.3s ease',
+                    transform: cardHover.card2
+                    ? 'translateY(-10px)'
+                    : 'translateY(0)',
+                    transition: 'transform 0.3s ease',
                 }}
-                onMouseEnter={() => handleCardHover('card4')}
-                onMouseLeave={() => handleCardLeave('card4')}
+                onMouseEnter={() => handleCardHover('card2')}
+                onMouseLeave={() => handleCardLeave('card2')}
                 >
                     <img
                         src={require('../assets/icons/mouse.png')}
@@ -123,10 +133,17 @@
                 <div
                 style={{
                     ...styles.card,
-                    backgroundColor: cardHover.card2 ? BUBBLEGUM_PINK : GREY,
+                    backgroundColor: cardHover.card3 ? colors.DARK_GREY : colors.GREY,
+                    boxShadow: cardHover.card3
+                    ? '0 4px 25px 0 rgba(0, 0, 0, 0.7)'
+                    : '0 4px 15px -5px rgba(0, 0, 0, 0.7)',
+                    transform: cardHover.card3
+                    ? 'translateY(-10px)'
+                    : 'translateY(0)',
+                    transition: 'transform 0.3s ease',
                 }}
-                onMouseEnter={() => handleCardHover('card2')}
-                onMouseLeave={() => handleCardLeave('card2')}
+                onMouseEnter={() => handleCardHover('card3')}
+                onMouseLeave={() => handleCardLeave('card3')}
                 >
                     <img
                         src={require('../assets/icons/speed.png')}
@@ -145,10 +162,18 @@
                 <div
                 style={{
                     ...styles.card,
-                    backgroundColor: cardHover.card3 ? BUBBLEGUM_PINK : GREY,
+                    backgroundColor: cardHover.card4 ? colors.DARK_GREY : colors.GREY,
+                    boxShadow: cardHover.card4
+                    ? '0 4px 25px 0 rgba(0, 0, 0, 0.7)'
+                    : '0 4px 15px -5px rgba(0, 0, 0, 0.7)',
+                    transition: 'box-shadow 0.3s ease',
+                    transform: cardHover.card4
+                    ? 'translateY(-10px)'
+                    : 'translateY(0)',
+                    transition: 'transform 0.3s ease',
                 }}
-                onMouseEnter={() => handleCardHover('card3')}
-                onMouseLeave={() => handleCardLeave('card3')}
+                onMouseEnter={() => handleCardHover('card4')}
+                onMouseLeave={() => handleCardLeave('card4')}
                 >
                     <img
                         src={require('../assets/icons/typing-test.png')}

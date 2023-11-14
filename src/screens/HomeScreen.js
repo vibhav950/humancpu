@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { users } from '../data/userData';
 import TestSelectionCards from '../components/TestSelectionCards';
+import { colors } from '../styles/colors';
 
-const GREY_COLOR = '#DBE2E9'
+// const GREY_COLOR = '#808080'
+// const GREY = '#3A424F';
+// const SKY_BLUE = '#00AEEF';
 
 export default function HomeScreen() {
   const [priofileSubTextHover, setProfileSubTextHover] = useState(false);
@@ -10,11 +13,13 @@ export default function HomeScreen() {
   const styles = {
     rootContainer: {
         padding: 10,
+        margin: 15
     },
     headerContainer: {
         position: 'fixed',
         top: 0,
         left: 0,
+        margin: 15,
     },
     headerText: {
         color: '#808080',
@@ -31,7 +36,10 @@ export default function HomeScreen() {
         width: 150,
         height: 45,
         borderRadius: 50,
-        backgroundColor: GREY_COLOR,
+        backgroundColor: colors.GREY,
+        color: colors.SKY_BLUE,
+        margin: 15,
+        boxShadow: '0 4px 15px -5px rgba(0, 0, 0, 0.7)',
     },
     profileImage: {
         // postion: 'relative',
@@ -44,26 +52,33 @@ export default function HomeScreen() {
         position: 'relative',
         marginLeft: 20,
         marginTop: -17.5,
-        fontSize: 22,
+        fontSize: 18,
         fontWeight: '600'
     },
     profileSubText: {
         position: 'absolute',
         marginLeft: 20,
         marginTop: 20,
-        fontSize: 12,
+        fontSize: 15,
         fontWeight: '500',
-        color: '#F4364C',
+        color: colors.RED,
         cursor: 'pointer',
         textDecoration: priofileSubTextHover ? 'underline' : 'none'
     },
-    
+    mainLogo: {
+      height: 78,
+      widhth: 'auto',
+    },
   };
 
   return (
     <div id="root" style={styles.rootContainer}>
       <div id="header" style={styles.headerContainer}>
-        <div style={styles.headerText}>HumanCPU</div>
+        {/* <div style={styles.headerText}>HumanCPU</div> */}
+        <img
+        src={require('../assets/icons/logo.png')}
+        style={styles.mainLogo}
+        />
       </div>
 
       <div id="profileContainer" style={styles.profileContainer}>
