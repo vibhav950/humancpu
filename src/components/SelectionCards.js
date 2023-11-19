@@ -37,10 +37,11 @@
                 alignItems: 'center',
                 textAlign: 'center',
                 boxShadow: '0 4px 15px -5px rgba(0, 0, 0, 0.7)',
+                justifyContent: 'space-around',
             },
             cardIcon: {
                 position: 'relative',
-                marginTop: 20,
+                marginTop: 15,
                 width: 105,
                 height: 105,
             },

@@ -1,5 +1,9 @@
 import './App.css';
+import LoginScreen from './screens/LoginScreen';
 import HomeScreen from './screens/HomeScreen';
+import AimTrainerScreen from './screens/AimTrainerScreen';
+import ClickSpeedScreen from './screens/ClickSpeedScreen';
+import ReactionTimeScreen from './screens/ReactionTimeScreen';
 import TypingSpeedScreen from './screens/TypingSpeedScreen';
 
 function App() {
@@ -10,13 +14,13 @@ function App() {
       Component = HomeScreen;
       break;
     case '/AimTraier':
-      Component = TypingSpeedScreen;
+      Component = AimTrainerScreen;
       break;
     case '/ClickSpeed':
-      Component = TypingSpeedScreen;
+      Component = ClickSpeedScreen;
       break;
     case '/ReactionTime':
-      Component = TypingSpeedScreen;
+      Component = ReactionTimeScreen;
       break;
     case '/TypingSpeed':
       Component = TypingSpeedScreen;

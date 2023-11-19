@@ -4,6 +4,15 @@ import "../styles/typingSpeedScreen.css";
 
 const N_WORDS = 40;
 
+const styles = {
+  headerContainer: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    margin: 15,
+  },
+};
+
 export default class TypingSpeedScreen extends Component {
   state = {
     text: "",
@@ -57,7 +66,6 @@ export default class TypingSpeedScreen extends Component {
     const lastLetter = inputValue[inputValue.length - 1];
 
     const currentWord = words[0];
-    console.log(currentWord, "currentWord");
 
     /* if SPACE or '.', check the word */
     if (lastLetter === " " || lastLetter === ".") {
@@ -109,7 +117,7 @@ export default class TypingSpeedScreen extends Component {
       wpm: wpm,
       timeElapsed: diff
     });
-  };
+  }; 
 
   render() {
     const {
@@ -126,6 +134,14 @@ export default class TypingSpeedScreen extends Component {
     if (!started)
       return (
         <div className="container-1">
+          <a href="/" style={{ textDecoration: 'none' }}>
+            <div id="header" style={styles.headerContainer}>
+              <img
+              src={require('../assets/icons/logo.png')}
+              style={{height: 78, width: 'auto'}}
+              />
+            </div>
+          </a>
           <img
           src={require('../assets/icons/speed.png')}
           style={{width: 100, height: 100, marginTop: -25}}
@@ -215,7 +231,7 @@ export default class TypingSpeedScreen extends Component {
             </div>
           </div>
 
-          <progress class="wpm-prog" value={progress} max="100"/>
+          <progress className="wpm-prog" value={progress} max="100"/>
           <p className="text">
             {text.split(" ").map((word, w_idx) => {
               let highlight = false;
@@ -280,7 +296,7 @@ export default class TypingSpeedScreen extends Component {
               <button className="container-2-btn" onClick={this.startGame}>
                 <img
                 style={{width: 28, height: 28, marginRight: 10}}
-                src={require('../assets/icons/start-grey.png')}
+                src={require('../assets/icons/replay.png')}
                 />
                 Restart
               </button>

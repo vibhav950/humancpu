@@ -13,7 +13,7 @@ export default function HomeScreen() {
   const styles = {
     rootContainer: {
         padding: 10,
-        margin: 15
+        margin: 15,
     },
     headerContainer: {
         position: 'fixed',

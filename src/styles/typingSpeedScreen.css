@@ -14,6 +14,13 @@ p {
   line-height: 1.5;
 }
 
+.header-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 15;
+}
+
 .container-1 {
   box-shadow: 0 4px 15px -5px rgba(0, 0, 0, 0.7);
   background-color: #3A424F;
@@ -82,7 +89,7 @@ p {
   align-items: center;
   width: 120px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   box-shadow: 0 4px 15px -5px rgba(0, 0, 0, 0.7);
 }
 
@@ -104,7 +111,7 @@ p {
   width: 135px;
   height: 40px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   box-shadow: 0 4px 15px -5px rgba(0, 0, 0, 0.7);
 }
 
@@ -126,7 +133,7 @@ p {
     text-align: center;
     width: 130px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
   }
 
 .end-btn:hover {
