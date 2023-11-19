@@ -133,7 +133,7 @@ export default function TestSelectionCards() {
                 </div>
             </a>
 
-            <a href="/" style={{textDecoration:'none'}}>
+            <a href="/ReactionTime" style={{textDecoration:'none'}}>
                 <div
                 style={{
                     ...styles.card,
@@ -164,7 +164,7 @@ export default function TestSelectionCards() {
                 </div>
             </a>
 
-            <a href="/TypingSpeedTest" style={{textDecoration:'none'}}>
+            <a href="/TypingSpeedScreen" style={{textDecoration:'none'}}>
 
             <div
             style={{

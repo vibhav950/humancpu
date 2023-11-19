@@ -1,8 +1,9 @@
-import LSPage from "./Components/Login_Signup/LoginPage";
+// import LSPage from "./Components/Login_Signup/LoginPage";
 import HomeScreen from "./Components/HomePage/HomePage"
 import TypingSpeedScreen from "./Components/TypingSpeed/TypingSpeedScreen";
 import ClickSpeed from "./Components/ClickSpeed/ClickSpeed";
 import Canvas from "./Components/AimTraining/Canvas";
+import ReactionTimeTest from "./Components/ReactionTime/ReactionTimeTest";
 
 function App() {
   let Component;
@@ -11,13 +12,16 @@ function App() {
     case '/':
       Component = HomeScreen;
       break;
-    case '/AimTraier':
+    case '/AimTrainer':
       Component = Canvas;
+      break;
+    case '/ReactionTime':
+      Component = ReactionTimeTest;
       break;
     case '/ClickSpeed':
       Component = ClickSpeed;
       break;
-    case '/TypingSpeed':
+    case '/TypingSpeedScreen':
       Component = TypingSpeedScreen;
       break;
     default :
