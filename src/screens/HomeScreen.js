@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { users } from '../data/userData';
-import TestSelectionCards from '../components/TestSelectionCards';
+import SelectionCards from '../components/SelectionCards';
 import { colors } from '../styles/colors';
 
 // const GREY_COLOR = '#808080'
@@ -73,13 +73,15 @@ export default function HomeScreen() {
 
   return (
     <div id="root" style={styles.rootContainer}>
-      <div id="header" style={styles.headerContainer}>
-        {/* <div style={styles.headerText}>HumanCPU</div> */}
-        <img
-        src={require('../assets/icons/logo.png')}
-        style={styles.mainLogo}
-        />
-      </div>
+
+      <a href="/" style={{textDecoration: 'none'}}>
+        <div id="header" style={styles.headerContainer}>
+          <img
+          src={require('../assets/icons/logo.png')}
+          style={styles.mainLogo}
+          />
+        </div>
+      </a>
 
       <div id="profileContainer" style={styles.profileContainer}>
         <div
@@ -102,7 +104,7 @@ export default function HomeScreen() {
         />
       </div>
 
-      <TestSelectionCards/>
+      <SelectionCards/>
     </div>
   );
 }

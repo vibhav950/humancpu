@@ -20,8 +20,8 @@ export default class TypingSpeedScreen extends Component {
   };
 
   componentDidMount() {
-    // this.startGame();
-    this.timerInterval = setInterval(this.calculateWPM, 1000); // Update every second
+    /* update the timer every second */
+    this.timerInterval = setInterval(this.calculateWPM, 1000);
   };
 
   componentWillUnmount() {
@@ -59,17 +59,16 @@ export default class TypingSpeedScreen extends Component {
     const currentWord = words[0];
     console.log(currentWord, "currentWord");
 
-    // if space or '.', check the word
+    /* if SPACE or '.', check the word */
     if (lastLetter === " " || lastLetter === ".") {
-      // check to see if it matches to the currentWord
-      // trim because it has the space
+      /* check to see if it matches currentWord */
+      /* trim to remove space */
       if (inputValue.trim() === currentWord) {
-        // remove the word from the wordsArray
-        // cleanUp the input
+        /* remove the word from wordsArray and clear the input field */
         const newWords = [...words.slice(1)];
         const newCompletedWords = [...completedWords, currentWord];
 
-        // Get the total progress by checking how much words are left
+        /* calc progress based on the number of remaining words */
         const progress =
           (newCompletedWords.length /
             (newWords.length + newCompletedWords.length)) *
@@ -98,7 +97,7 @@ export default class TypingSpeedScreen extends Component {
     if (!startTime) return;
 
     const now = Date.now();
-    const diff = (now - startTime) / 1000 / 60; // 1000 ms / 60 s
+    const diff = (now - startTime) / 1000 / 60; /* 1000 (ms) / 60 (s) */
 
     const wordsTyped = Math.ceil(
       completedWords.reduce((acc, word) => (acc += word.length), 0) / 5
@@ -145,6 +144,7 @@ export default class TypingSpeedScreen extends Component {
                    paddingLeft: 125,
                    paddingRight: 125
            }}>
+
             <button className="start-btn" onClick={this.startGame}>
               <img
               style={{width: 28, height: 28, marginRight: 10}}
@@ -153,13 +153,16 @@ export default class TypingSpeedScreen extends Component {
               Start
             </button>
 
-            <button className="start-btn" onClick={() => {}}>
-              <img
-              style={{width: 25, height: 25, marginRight: 10}}
-              src={require('../assets/icons/home-grey.png')}
-              />
-              Home
-            </button>
+            <a href="/" style={{textDecoration: 'none'}}>
+              <button className="start-btn" onClick={() => {}}>
+                <img
+                style={{width: 25, height: 25, marginRight: 10}}
+                src={require('../assets/icons/home-grey.png')}
+                />
+                Home
+              </button>
+            </a>
+
           </div>
 
         </div>
@@ -174,10 +177,24 @@ export default class TypingSpeedScreen extends Component {
           <h2>
             Your typing speed is <strong>{wpm} WPM</strong>
           </h2>
-          <div style={{ display: 'flex', justifyContent: 'space-around'}}>
+          <div style={{ display: 'flex', justifyContent: 'space-around' }}>
             <button className="end-btn" onClick={this.startGame}>
-              Play again
+              <img
+                style={{width: 25, height: 25, marginRight: 0}}
+                src={require('../assets/icons/replay.png')}
+                />
+              Retry
             </button>
+
+            <a href="/" style={{textDecoration: 'none'}}>
+              <button className="end-btn" onClick={() => {}}>
+                <img
+                style={{width: 25, height: 25, marginRight: 0}}
+                src={require('../assets/icons/home-grey.png')}
+                />
+                Home
+              </button>
+            </a>
           </div>
         </div>
       );
@@ -268,6 +285,7 @@ export default class TypingSpeedScreen extends Component {
                 Restart
               </button>
 
+            <a href="/" style={{textDecoration: 'none'}}>
               <button className="container-2-btn" onClick={() => {}}>
                 <img
                 style={{width: 25, height: 25, marginRight: 10}}
@@ -275,6 +293,8 @@ export default class TypingSpeedScreen extends Component {
                 />
                 Home
               </button>
+            </a>
+            
             </div>
           </div>
         </div>
