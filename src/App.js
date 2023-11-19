@@ -9,19 +9,32 @@ const ReactionTimeTest = () => {
     const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
     const startTest = async () => {
+        var i=0;
         setLights(['gray', 'gray', 'gray', 'gray', 'gray']);
         setIsActive(true);
         setStartTime(null);
         setReactionTime(null);
 
         // Turn on lights sequentially
-        for (let i = 0; i < 5; i++) {
+        for (i = 0; i < 5; i++) {
             await sleep(1000);
-            setLights((prevLights) => {
-                const newLights = [...prevLights];
-                newLights[i] = 'red';
-                return newLights;
-            });
+            switch(i){
+                case 0:
+                    setLights(['red', 'gray', 'gray', 'gray', 'gray']);
+                    break;
+                case 1:
+                    setLights(['red', 'red', 'gray', 'gray', 'gray']);
+                    break;
+                case 2:
+                    setLights(['red', 'red', 'red', 'gray', 'gray']);
+                    break;
+                case 3:
+                    setLights(['red', 'red', 'red', 'red', 'gray']);
+                    break;
+                case 4:
+                    setLights(['red', 'red', 'red', 'red', 'red']);
+                    break;
+            }
         }
 
         // Turn off lights after a random delay
@@ -83,7 +96,13 @@ const ReactionTimeTest = () => {
                     </div>
                 ))}
             </div>
-            {reactionTime !== null && <p>Reaction Time: {reactionTime} milliseconds</p>}
+            {reactionTime !== null && (
+                <p>
+                    {typeof reactionTime === 'string'
+                        ? reactionTime // Display "Jump Start!!!" differently
+                        : `Reaction Time: ${reactionTime} milliseconds`}
+                </p>
+            )}
             <p>{isActive ? 'Click when the lights go off!' : 'Click now'}</p>
         </div>
     );
