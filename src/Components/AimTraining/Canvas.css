@@ -1,0 +1,39 @@
+h1 {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color : #00aeef
+  }
+  
+  
+  h2 {
+    text-align: center;
+    color : #00aeef
+  }
+  
+  button {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #b0ff49; /* Updated background color for both buttons */
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    letter-spacing: 4px;
+    overflow: hidden;
+    transition: 0.5s;
+    margin-bottom: 40px;
+  }
+  
+  button:hover {
+    background: #03e9f4;
+    color: #050801;
+    box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4,
+      0 0 200px #03e9f4;
+    -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+  }
+  
+  p {
+    color : #00aeef
+  }
+  

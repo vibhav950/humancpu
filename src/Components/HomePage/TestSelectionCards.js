@@ -32,8 +32,7 @@ export default function TestSelectionCards() {
             alignItems: 'center',
             width: 1150,
             height: 'auto',
-            margin: 120,
-            margin: 40
+            margin: '120 40',
         },
         card: {
             width: 250,
@@ -70,96 +69,102 @@ export default function TestSelectionCards() {
         style={styles.parentContainer}
         onClick={() => {}}
         >
-            <div
-            style={{
-                ...styles.card,
-                backgroundColor: cardHover.card1 ? colors.DARK_GREY : colors.GREY,
-                boxShadow: cardHover.card1
-                ? '0 4px 25px 0 rgba(0, 0, 0, 0.7)'
-                : '0 4px 15px -5px rgba(0, 0, 0, 0.7)',
-                transition: 'box-shadow 0.3s ease',
-                transform: cardHover.card1
-                ? 'translateY(-10px)'
-                : 'translateY(0)',
-                transition: 'transform 0.3s ease',
-            }}
-            onMouseEnter={() => handleCardHover('card1')}
-            onMouseLeave={() => handleCardLeave('card1')}
-            >
-                <img
-                    src={require('./assets/target.png')}
-                    style={styles.cardIcon}
-                    alt="target_picture"
-                />
+            <a href="/AimTrainer" style={{textDecoration:'none'}}>
+                <div
+                style={{
+                    ...styles.card,
+                    backgroundColor: cardHover.card1 ? colors.DARK_GREY : colors.GREY,
+                    boxShadow: cardHover.card1
+                    ? '0 4px 25px 0 rgba(0, 0, 0, 0.7)'
+                    : '0 4px 15px -5px rgba(0, 0, 0, 0.7)',
+                    transition: 'box-shadow 0.3s ease transform 0.3s ease',
+                    transform: cardHover.card1
+                    ? 'translateY(-10px)'
+                    : 'translateY(0)',
+                }}
+                onMouseEnter={() => handleCardHover('card1')}
+                onMouseLeave={() => handleCardLeave('card1')}
+                >
+                    <img
+                        src={require('./assets/target.png')}
+                        style={styles.cardIcon}
+                        alt="target_picture"
+                    />
 
-                <div style={styles.cardTitle}>
-                    {'Aim Trainer'}
+                    <div style={styles.cardTitle}>
+                        {'Aim Trainer'}
+                    </div>
+                    
+                    <div style={styles.cardSubTitle}>
+                        {'How good would you be as a pro CSGO player?'}
+                    </div>
                 </div>
-                
-                <div style={styles.cardSubTitle}>
-                    {'How good would you be as a pro CSGO player?'}
+            </a>
+
+            <a href="/ClickSpeed" style={{textDecoration:'none'}}>
+                <div
+                style={{
+                    ...styles.card,
+                    backgroundColor: cardHover.card2 ? colors.DARK_GREY : colors.GREY,
+                    boxShadow: cardHover.card2
+                    ? '0 4px 25px 0 rgba(0, 0, 0, 0.7)'
+                    : '0 4px 15px -5px rgba(0, 0, 0, 0.7)',
+                    transition: 'box-shadow 0.3s ease transform 0.3s ease',
+                    transform: cardHover.card2
+                    ? 'translateY(-10px)'
+                    : 'translateY(0)',
+                }}
+                onMouseEnter={() => handleCardHover('card2')}
+                onMouseLeave={() => handleCardLeave('card2')}
+                >
+                    <img
+                        src={require('./assets/mouse.png')}
+                        style={styles.cardIcon}
+                        alt="mouse_picture"
+                    />
+
+                    <div style={styles.cardTitle}>
+                        {'Click Speed'}
+                    </div>
+
+                    <div style={styles.cardSubTitle}>
+                        {'How fast can you spam your left mouse button?'}
+                    </div>
                 </div>
-            </div>
+            </a>
 
-            <div
-            style={{
-                ...styles.card,
-                backgroundColor: cardHover.card2 ? colors.DARK_GREY : colors.GREY,
-                boxShadow: cardHover.card2
-                ? '0 4px 25px 0 rgba(0, 0, 0, 0.7)'
-                : '0 4px 15px -5px rgba(0, 0, 0, 0.7)',
-                transition: 'box-shadow 0.3s ease',
-                transform: cardHover.card2
-                ? 'translateY(-10px)'
-                : 'translateY(0)',
-                transition: 'transform 0.3s ease',
-            }}
-            onMouseEnter={() => handleCardHover('card2')}
-            onMouseLeave={() => handleCardLeave('card2')}
-            >
-                <img
-                    src={require('./assets/mouse.png')}
-                    style={styles.cardIcon}
-                    alt="mouse_picture"
-                />
+            <a href="/" style={{textDecoration:'none'}}>
+                <div
+                style={{
+                    ...styles.card,
+                    backgroundColor: cardHover.card3 ? colors.DARK_GREY : colors.GREY,
+                    boxShadow: cardHover.card3
+                    ? '0 4px 25px 0 rgba(0, 0, 0, 0.7)'
+                    : '0 4px 15px -5px rgba(0, 0, 0, 0.7)',
+                    transform: cardHover.card3
+                    ? 'translateY(-10px)'
+                    : 'translateY(0)',
+                    transition: 'transform 0.3s ease',
+                }}
+                onMouseEnter={() => handleCardHover('card3')}
+                onMouseLeave={() => handleCardLeave('card3')}
+                >
+                    <img
+                        src={require('./assets/speed.png')}
+                        style={styles.cardIcon}
+                        alt="speed_picture"/>
 
-                <div style={styles.cardTitle}>
-                    {'Click Speed'}
+                    <div style={styles.cardTitle}>
+                        {'Reaction Time'}
+                    </div>
+
+                    <div style={styles.cardSubTitle}>
+                        {'How fast are your visual reflexes?'}
+                    </div>
                 </div>
+            </a>
 
-                <div style={styles.cardSubTitle}>
-                    {'How fast can you spam your left mouse button?'}
-                </div>
-            </div>
-
-            <div
-            style={{
-                ...styles.card,
-                backgroundColor: cardHover.card3 ? colors.DARK_GREY : colors.GREY,
-                boxShadow: cardHover.card3
-                ? '0 4px 25px 0 rgba(0, 0, 0, 0.7)'
-                : '0 4px 15px -5px rgba(0, 0, 0, 0.7)',
-                transform: cardHover.card3
-                ? 'translateY(-10px)'
-                : 'translateY(0)',
-                transition: 'transform 0.3s ease',
-            }}
-            onMouseEnter={() => handleCardHover('card3')}
-            onMouseLeave={() => handleCardLeave('card3')}
-            >
-                <img
-                    src={require('./assets/speed.png')}
-                    style={styles.cardIcon}
-                    alt="speed_picture"/>
-
-                <div style={styles.cardTitle}>
-                    {'Reaction Time'}
-                </div>
-
-                <div style={styles.cardSubTitle}>
-                    {'How fast are your visual reflexes?'}
-                </div>
-            </div>
+            <a href="/TypingSpeedTest" style={{textDecoration:'none'}}>
 
             <div
             style={{
@@ -168,11 +173,10 @@ export default function TestSelectionCards() {
                 boxShadow: cardHover.card4
                 ? '0 4px 25px 0 rgba(0, 0, 0, 0.7)'
                 : '0 4px 15px -5px rgba(0, 0, 0, 0.7)',
-                transition: 'box-shadow 0.3s ease',
+                transition: 'box-shadow 0.3s ease transform 0.3s ease',
                 transform: cardHover.card4
                 ? 'translateY(-10px)'
                 : 'translateY(0)',
-                transition: 'transform 0.3s ease',
             }}
             onMouseEnter={() => handleCardHover('card4')}
             onMouseLeave={() => handleCardLeave('card4')}
@@ -180,6 +184,7 @@ export default function TestSelectionCards() {
                 <img
                     src={require('./assets/typing-test.png')}
                     style={styles.cardIcon}
+                    alt="typing_picture"
                 />
 
                 <div style={styles.cardTitle}>
@@ -190,6 +195,7 @@ export default function TestSelectionCards() {
                     {'Are you the fastest typist in the room?'}
                 </div>
             </div>
+            </a>
         </div>
     );
 }

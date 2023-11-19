@@ -4,13 +4,18 @@
   font-family: "Roboto", sans-serif;
 }
 
+body {
+  background-color: #2c394c;
+}
+
 .website-name {
   text-align: left;
-  font-size: 32px;
+  font-size: 40px;
   margin: 10px;
   position: absolute;
   top: 10px; /* Adjust the top position as needed */
   left: 10px; /* Adjust the left position as needed */
+  color: #00aeef;
 }
 
 .click-counter-container {
@@ -18,47 +23,57 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 75vh; /* Set the container height to 100% of the viewport height */
+  box-shadow: 0 4px 15px -5px rgba(0, 0, 0, 0.7);
+  height: 450px; /* Set the container height to 100% of the viewport height */
+  width: 650px;
+  background-color: #3a424f;
+  border-radius: 15px;
 }
 
 .click-counter-title {
-  font-size: 24px;
+  font-size: 30px;
   margin-bottom: 30px;
   text-align: center;
+  color: #00aeef;
 }
 
 .time-label {
   margin-bottom: 10px;
+  color: #00aeef;
 }
 
 .time-dropdown {
   padding: 8px;
   font-size: 14px;
   border: 1px solid #ccc;
+  color: #00aeef;
+  background-color: #2c394c;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease; /* Add transitions for background color and text color */
 }
 
 .time-dropdown:hover {
-  background-color: #f0f0f0; /* Change the background color on hover */
+  background-color: #2c404c; /* Change the background color on hover */
 }
 
 .time-dropdown:focus {
   outline: none; /* Remove the default focus outline */
-  background-color: #e0e0e0; /* Change the background color when focused */
+  background-color: #2c404c; /* Change the background color when focused */
 }
 
 .time-dropdown option {
+  color: #00aeef;
   transition: background-color 0.3s ease, color 0.3s ease; /* Add transitions for background color and text color for options */
 }
 
 .time-dropdown option:hover {
-  background-color: #ddd; /* Change the background color of options on hover */
+  background-color: #2c404c; /* Change the background color of options on hover */
 }
 
 .click-stats {
-  margin : 10px auto;
+  color: #00aeef;
+  margin: 10px auto;
   text-align: left;
 }
 
@@ -69,7 +84,6 @@
   display: block; /* Display as block (one below the other) */
   margin-bottom: 10px; /* Add space between them */
 }
-
 
 .click-area {
   width: 300px; /* Set the width to your desired value */
@@ -99,7 +113,7 @@
 
 .game-over {
   font-size: 24px;
-  color: #000;
+  color: #00aeef;
 }
 
 .restart-button,
@@ -114,6 +128,7 @@
   letter-spacing: 4px;
   overflow: hidden;
   transition: 0.5s;
+  margin-bottom: 40px;
 }
 
 .restart-button:hover,

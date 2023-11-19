@@ -1,6 +1,6 @@
 // ClickCounter.js
 import React, { useState, useEffect } from 'react';
-//import './ClickSpeed.css';
+import './ClickSpeed.css';
 
 const ClickSpeedCounter = ({ clicks, time }) => {
   const clickSpeed = clicks / time || 0;

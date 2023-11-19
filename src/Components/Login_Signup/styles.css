@@ -10,7 +10,7 @@
   }
   
   body {
-    background: #f6f5f7;
+    background: #2c394c;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,7 +31,7 @@
   
   p {
     font-size: 14px;
-    font-weight: 100;
+    font-weight: 500;
     line-height: 20px;
     letter-spacing: 0.5px;
     margin: 20px 0 30px;
@@ -50,9 +50,9 @@
   
   button {
     border-radius: 20px;
-    border: 1px solid #ff4b2b;
-    background-color: #ff4b2b;
-    color: #ffffff;
+    border: 1px solid #b0ff49;
+    background-color: #b0ff49;
+    color: #000;
     font-size: 12px;
     font-weight: bold;
     padding: 12px 45px;
@@ -75,7 +75,7 @@
   }
   
   form {
-    background-color: #ffffff;
+    background-color: #2c404c;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -94,7 +94,7 @@
   }
   
   .container {
-    background-color: #fff;
+    background-color: #2c404c;
     border-radius: 10px;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     position: relative;
@@ -165,9 +165,7 @@
   }
   
   .overlay {
-    background: #ff416c;
-    background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
-    background: linear-gradient(to right, #ff4b2b, #ff416c);
+    background: #BD4C45;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0 0;
@@ -248,10 +246,10 @@
   }
   
   footer i {
-    color: red;
+    color: b0ff49;
   }
   
   footer a {
-    color: #3c97bf;
+    color: #000;
     text-decoration: none;
   }
