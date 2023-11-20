@@ -4,7 +4,6 @@ import SelectionCards from '../components/SelectionCards';
 import { colors } from '../styles/colors';
 
 export default function HomeScreen() {
-  const [priofileSubTextHover, setProfileSubTextHover] = useState(false);
   const [logoutHover, setLogoutHover] = useState(false);
 
   const styles = {
@@ -60,7 +59,6 @@ export default function HomeScreen() {
         fontWeight: '500',
         color: colors.RED,
         cursor: 'pointer',
-        textDecoration: priofileSubTextHover ? 'underline' : 'none'
     },
     mainLogo: {
       height: 78,
@@ -90,14 +88,12 @@ export default function HomeScreen() {
   return (
     <div id="root" style={styles.rootContainer}>
 
-      <a href="/" style={{textDecoration: 'none'}}>
-        <div id="header" style={styles.headerContainer}>
-          <img
-          src={require('../assets/icons/logo.png')}
-          style={styles.mainLogo}
-          />
-        </div>
-      </a>
+      <div id="header" style={styles.headerContainer}>
+        <img
+        src={require('../assets/icons/logo.png')}
+        style={styles.mainLogo}
+        />
+      </div>
 
       <div id="profileContainer" style={styles.profileContainer}>
         <div
