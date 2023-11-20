@@ -1,6 +1,6 @@
-// ClickCounter.js
 import React, { useState, useEffect } from 'react';
 import '../styles/clickSpeedScreen.css';
+import { useNavigate } from 'react-router-dom';
 
 const ClickSpeedCounter = ({ clicks, time }) => {
   const clickSpeed = clicks / time || 0;
@@ -17,6 +17,7 @@ const ClickSpeedScreen = () => {
   const [timeRemaining, setTimeRemaining] = useState(10);
   const [isGameActive, setIsGameActive] = useState(false);
   const [selectedTime, setSelectedTime] = useState(10);
+  const navigate = useNavigate(); // Initialize useHistory hook
 
   useEffect(() => {
     let timer;
@@ -61,6 +62,10 @@ const ClickSpeedScreen = () => {
     setIsGameActive(false);
   };
 
+  const handleHomeButtonClick = () => {
+    navigate('/Home'); // Navigate to the home screen when headerIcon is clicked
+  };
+
   const styles = {
     parentContainer: {
       boxShadow: '0 4px 15px -5px rgba(0, 0, 0, 0.7)',
@@ -85,14 +90,14 @@ const ClickSpeedScreen = () => {
 
   return (
     <div className='click-counter-container'>
-      <a href="/" style={{ textDecoration: 'none' }}>
-        <div id="header" style={styles.headerContainer}>
+      {/* <a href="/" style={{ textDecoration: 'none' }}> */}
+        <div id="homeIcon" style={styles.headerContainer} onClick={handleHomeButtonClick}>
         <img
         src={require('../assets/icons/logo.png')}
         style={{height: 78, width: 'auto'}}
         />
         </div>
-      </a>
+      {/* </a> */}
 
       <img
         src={require('../assets/icons/mouse.png')}
@@ -128,7 +133,6 @@ const ClickSpeedScreen = () => {
 
       {isGameActive ? (
         <div className="click-area" onClick={handleAreaClick}>
-          {/* Empty div for click area */}
           <p className="click-here-text">CLICK HERE</p>
         </div>
       ) : (

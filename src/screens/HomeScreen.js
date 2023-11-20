@@ -3,10 +3,6 @@ import { users } from '../data/userData';
 import SelectionCards from '../components/SelectionCards';
 import { colors } from '../styles/colors';
 
-// const GREY_COLOR = '#808080'
-// const GREY = '#3A424F';
-// const SKY_BLUE = '#00AEEF';
-
 export default function HomeScreen() {
   const [priofileSubTextHover, setProfileSubTextHover] = useState(false);
   const [logoutHover, setLogoutHover] = useState(false);
@@ -112,10 +108,11 @@ export default function HomeScreen() {
         <button
         style={{
           ...styles.logoutBtn,
-          backgroundColor: logoutHover ? colors.RED : '#3A424F'
+          backgroundColor: logoutHover ? colors.RED : 'grey'
           }}
-          onMouseEnter={() => setLogoutHover(true)}
-          onMouseLeave={() => setLogoutHover(false)}
+        onMouseEnter={() => setLogoutHover(true)}
+        onMouseLeave={() => setLogoutHover(false)}
+        onClick={() => {console.log('Clicked logout')}}
         >
           Logout
         </button>

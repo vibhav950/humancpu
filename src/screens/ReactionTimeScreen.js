@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function ReactionTimeScreen() {
     const [lights, setLights] = useState(['#36454F', '#36454F', '#36454F', '#36454F', '#36454F']);
@@ -6,6 +7,7 @@ export default function ReactionTimeScreen() {
     var [startTime, setStartTime] = useState(null);
     const [reactionTime, setReactionTime] = useState(null);
     const [hover, setHover] = useState(false);
+    const navigate = useNavigate(); // Initialize useHistory hook
 
     const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -61,6 +63,10 @@ export default function ReactionTimeScreen() {
         }
     };
 
+    const handleHomeButtonClick = () => {
+        navigate('/Home'); // Navigate to the home screen when headerIcon is clicked
+      };
+
     const styles = {
         parentContainer: {
             boxShadow: '0 4px 15px -5px rgba(0, 0, 0, 0.7)',
@@ -91,14 +97,14 @@ export default function ReactionTimeScreen() {
 
     return (
         <div>
-            <a href="/" style={{ textDecoration: 'none' }}>
-                <div id="header" style={styles.headerContainer}>
+            {/* <a href="/" style={{ textDecoration: 'none' }}> */}
+                <div id="homeIcon" style={styles.headerContainer} onClick={handleHomeButtonClick}>
                 <img
                 src={require('../assets/icons/logo.png')}
                 style={{...styles.mainLogo, height: 78, width: 'auto'}}
                 />
                 </div>
-            </a>
+            {/* </a> */}
 
             <div style={{...
                 styles.parentContainer,

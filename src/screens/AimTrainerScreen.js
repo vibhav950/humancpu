@@ -1,9 +1,11 @@
 // Canvas.js
 import React, {useState, useEffect, useRef, useCallback} from "react";
 import '../styles/aimTrainerScreen.css';
+import { useNavigate } from 'react-router-dom';
 
 export default function AimTrainerScreen() {
     const canvasRef = useRef(null);
+    const navigate = useNavigate(); // Initialize useHistory hook
 
     // Function to generate a random target position
     const generateRandomTarget = useCallback(() => {
@@ -105,16 +107,20 @@ export default function AimTrainerScreen() {
       },
     }
 
+    const handleHomeButtonClick = () => {
+        navigate('/Home') // Navigate to the home screen when headerIcon is clicked
+      }
+
     return (
         <div>
-            <a href="/" style={{ textDecoration: 'none' }}>
-              <div id="header" style={styles.headerContainer}>
+            {/* <a href="/" style={{ textDecoration: 'none' }}> */}
+              <div id="homeIcon" style={styles.headerContainer} onClick={handleHomeButtonClick}>
               <img
               src={require('../assets/icons/logo.png')}
               style={{height: 78, width: 'auto'}}
               />
               </div>
-            </a>
+            {/* </a> */}
 
             <div
             className="parent-container">

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { generate } from "random-words";
 import "../styles/typingSpeedScreen.css";
+import { useNavigate } from 'react-router-dom';
 
 const N_WORDS = 40;
 
@@ -13,7 +14,18 @@ const styles = {
   },
 };
 
-export default class TypingSpeedScreen extends Component {
+export default function TypingSpeedScreenWrapper (){
+  const navigate = useNavigate(); // extract navigation prop here 
+  
+   return <TypingSpeedScreen navigation={navigate} /> //pass to your component.
+};
+
+
+// const handleHomeButtonClick = () => {
+//   navigate('/'); // Navigate to the home screen when headerIcon is clicked
+// };
+
+class TypingSpeedScreen extends Component {
   state = {
     text: "",
     inputValue: "",
@@ -131,17 +143,19 @@ export default class TypingSpeedScreen extends Component {
       progress
     } = this.state;
 
+    const { navigation } = this.props;
+
     if (!started)
       return (
         <div className="container-1">
-          <a href="/" style={{ textDecoration: 'none' }}>
-            <div id="header" style={styles.headerContainer}>
+          {/* <a href="/" style={{ textDecoration: 'none' }}> */}
+            <div id="homeIcon" style={styles.headerContainer} onClick={() => {navigation('/Home')}}>
               <img
               src={require('../assets/icons/logo.png')}
               style={{height: 78, width: 'auto'}}
               />
             </div>
-          </a>
+          {/* </a> */}
           <img
           src={require('../assets/icons/speed.png')}
           style={{width: 100, height: 100, marginTop: -25}}
@@ -169,15 +183,15 @@ export default class TypingSpeedScreen extends Component {
               Start
             </button>
 
-            <a href="/" style={{textDecoration: 'none'}}>
-              <button className="start-btn" onClick={() => {}}>
+            {/* <a href="/" style={{textDecoration: 'none'}}> */}
+              <button className="start-btn" onClick={() => {navigation('/Home')}}>
                 <img
                 style={{width: 25, height: 25, marginRight: 10}}
                 src={require('../assets/icons/home-grey.png')}
                 />
                 Home
               </button>
-            </a>
+            {/* </a> */}
 
           </div>
 
@@ -202,15 +216,15 @@ export default class TypingSpeedScreen extends Component {
               Retry
             </button>
 
-            <a href="/" style={{textDecoration: 'none'}}>
-              <button className="end-btn" onClick={() => {}}>
+            {/* <a href="/" style={{textDecoration: 'none'}}> */}
+              <button className="end-btn" onClick={() => {navigation('/Home')}}>
                 <img
                 style={{width: 25, height: 25, marginRight: 0}}
                 src={require('../assets/icons/home-grey.png')}
                 />
                 Home
               </button>
-            </a>
+            {/* </a> */}
           </div>
         </div>
       );
@@ -301,15 +315,15 @@ export default class TypingSpeedScreen extends Component {
                 Restart
               </button>
 
-            <a href="/" style={{textDecoration: 'none'}}>
-              <button className="container-2-btn" onClick={() => {}}>
+            {/* <a href="/" style={{textDecoration: 'none'}}> */}
+              <button className="container-2-btn" onClick={() => {navigation('/Home')}}>
                 <img
                 style={{width: 25, height: 25, marginRight: 10}}
                 src={require('../assets/icons/home-grey.png')}
                 />
                 Home
               </button>
-            </a>
+            {/* </a> */}
             
             </div>
           </div>
