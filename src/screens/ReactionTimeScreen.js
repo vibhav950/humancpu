@@ -90,15 +90,7 @@ export default function ReactionTimeScreen() {
     }
 
     return (
-        <div style={{...
-            styles.parentContainer,
-            backgroundColor : hover ? '#4C5667' : '#3A424F', 
-            }}
-            onClick={handleClick}
-            onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
-        >
-
+        <div>
             <a href="/" style={{ textDecoration: 'none' }}>
                 <div id="header" style={styles.headerContainer}>
                 <img
@@ -108,63 +100,73 @@ export default function ReactionTimeScreen() {
                 </div>
             </a>
 
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-                {lights.map((color, index) => (
-                    <div
-                        key={index}
-                        style={{
-                            width: '100px',
-                            height: '200px',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'center',
-                            backgroundColor: 'black',
-                            margin: '10px',
-                            borderRadius: '10px',
-                        }}
-                    >
-                        <div
-                            style={{
-                                marginTop: '20px',
-                                width: '65px',
-                                height: '65px',
-                                backgroundColor: isActive ? color : '#36454F', // Use isActive instead of active
-                                borderRadius: '50%',
-                                marginBottom: '20px',
-                            }}
-                        ></div>
-                        <div
-                            style={{
-                                width: '65px',
-                                height: '65px',
-                                backgroundColor: isActive ? color : '#36454F', // Use isActive instead of active
-                                borderRadius: '50%',
-                            }}
-                        ></div>
-                    </div>
-                ))}
-            </div>
-
-            <div style={{
-                ...styles.displayContainer,
-                marginTop: reactionTime !== null ? -10 : 55,
+            <div style={{...
+                styles.parentContainer,
+                backgroundColor : hover ? '#4C5667' : '#3A424F', 
                 }}
-            >
-                {reactionTime !== null && (
-                    <p style={{ marginTop: 30 }}>
-                        <span style={styles.reactionTimeText}>
-                            {typeof reactionTime === 'string'
-                                ? reactionTime // Display "Jump Start!!!" differently
-                                : `${reactionTime}`}
-                        </span>
-                        <span style={{ fontSize: 22 }}> ms</span>
+                onClick={handleClick}
+                onMouseEnter={() => setHover(true)}
+                onMouseLeave={() => setHover(false)}
+            >   
+
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    {lights.map((color, index) => (
+                        <div
+                            key={index}
+                            style={{
+                                width: '100px',
+                                height: '200px',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                backgroundColor: 'black',
+                                margin: '10px',
+                                borderRadius: '10px',
+                            }}
+                        >
+                            <div
+                                style={{
+                                    marginTop: '20px',
+                                    width: '65px',
+                                    height: '65px',
+                                    backgroundColor: isActive ? color : '#36454F', // Use isActive instead of active
+                                    borderRadius: '50%',
+                                    marginBottom: '20px',
+                                }}
+                            ></div>
+                            <div
+                                style={{
+                                    width: '65px',
+                                    height: '65px',
+                                    backgroundColor: isActive ? color : '#36454F', // Use isActive instead of active
+                                    borderRadius: '50%',
+                                }}
+                            ></div>
+                        </div>
+                    ))}
+                </div>
+
+                <div style={{
+                    ...styles.displayContainer,
+                    marginTop: reactionTime !== null ? -10 : 55,
+                    }}
+                >
+                    {reactionTime !== null && (
+                        <p style={{ marginTop: 30 }}>
+                            <span style={styles.reactionTimeText}>
+                                {typeof reactionTime === 'string'
+                                    ? reactionTime // Display "Jump Start!!!" differently
+                                    : `${reactionTime}`}
+                            </span>
+                            <span style={{ fontSize: 22 }}> ms</span>
+                        </p>
+                    )}
+
+                    <p style={{fontSize: 22, fontWeight: '600'}}>
+                        {isActive ? 'Click when the lights go out' : 'Click now'}
                     </p>
-                )}
 
-                <p>
-                    {isActive ? 'Click when the lights go out' : 'Click to start'}
-                </p>
-
+                </div>
             </div>
         </div>
     );

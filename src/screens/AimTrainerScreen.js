@@ -1,6 +1,6 @@
 // Canvas.js
 import React, {useState, useEffect, useRef, useCallback} from "react";
-import '../styles/aimTrainerScreen.css'
+import '../styles/aimTrainerScreen.css';
 
 export default function AimTrainerScreen() {
     const canvasRef = useRef(null);
@@ -96,20 +96,67 @@ export default function AimTrainerScreen() {
         return () => clearInterval(countdown);
     }, [isGameStarted, timeLeft]);
 
+    const styles = {
+      headerContainer: {
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        margin: 15,
+      },
+    }
+
     return (
         <div>
-            <h1>Human CPU</h1>
-            <h2>Aim Trainer</h2>
+            <a href="/" style={{ textDecoration: 'none' }}>
+              <div id="header" style={styles.headerContainer}>
+              <img
+              src={require('../assets/icons/logo.png')}
+              style={{height: 78, width: 'auto'}}
+              />
+              </div>
+            </a>
+
+            <div
+            className="parent-container">
+
+            {/* <img
+            src={require('../assets/icons/target.png')}
+            style={{width: 100, height: 100, marginTop: 20, marginBottom: 25}}
+            /> */}
+
+            { !isGameStarted && timeLeft > 0 && (
+              <div style={{alignItems: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'space-around'}}>
+
+                <img
+                src={require('../assets/icons/target.png')}
+                style={{width: 100, height: 100, marginTop: 20, marginBottom: 25}}
+                />
+
+                <p className="aimtr-subtext">
+                  Click the bullseye as many times as possible till
+                  the timer runs out
+                </p>
+              </div>
+            )}
+
             {!isGameStarted && timeLeft > 0 && (
                 <div>
-                    <button onClick={startGame}>Start Game</button>
+                  <div>
+                      <button className="aimtr" onClick={startGame}>
+                        <img
+                        style={{width: 28, height: 28, marginRight: 10}}
+                        src={require('../assets/icons/start-grey.png')}
+                        />
+                        Start
+                      </button>
+                  </div>
                 </div>
             )}
             {isGameStarted && (
                 <div>
-                    <div style={{display: "flex"}}>
-                        <p style={{marginRight: "500px"}}>Score: {score} </p>
-                        <p>Time Left: {timeLeft}</p>
+                    <div style={{display: 'flex', justifyContent: 'space-evenly', width: '100%', marginTop: 50}}>
+                        <p style={{color: '#FF7B91', marginRight: "500px"}}><span className="score">Score </span>{score} </p>
+                        <p style={{color: '#FF7B91'}}><span className="time-left">Time Left </span>{timeLeft} s</p>
                     </div>
 
                     <div
@@ -117,14 +164,17 @@ export default function AimTrainerScreen() {
                         style={{
                             position: "relative",
                             overflow: "hidden",
-                            height: "60vh",
-                            width: "80vh"
+                            height: 375,
+                            width: 800,
+                            boxShadow: '0 4px 15px -5px rgba(0, 0, 0, 0.7)',
+                            borderRadius: 15,
+                            backgroundColor: '#3A424F',
                         }}
                         ref={(ref) => (canvasRef.current = ref)}
                     >
                         <div className="bullseye" style={{
-                            width: '75px',
-                            height: '75px',
+                            width: '55px',
+                            height: '55px',
                             backgroundColor: 'white',
                             borderRadius: '50%',
                             position: 'absolute',
@@ -161,10 +211,11 @@ export default function AimTrainerScreen() {
                     </div>
                 </div>
             )}
+            </div>
             {!isGameStarted && timeLeft === 0 && (
                 <div>
-                    <p>Game Over!</p>
-                    <button onClick={restartGame}>Restart Game</button>
+                    <p style={{color: '#FF7B91', fontSize: 22, fontWeight: '600', marginBottom: 50}}>Game Over</p>
+                    <button className="aimtr" onClick={restartGame}>Restart</button>
                 </div>
             )}
         </div>

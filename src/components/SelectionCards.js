@@ -41,7 +41,7 @@
             },
             cardIcon: {
                 position: 'relative',
-                marginTop: 15,
+                marginTop: 25,
                 width: 105,
                 height: 105,
             },
@@ -54,7 +54,7 @@
             cardSubTitle: {
                 margin: 15,
                 width: 220,
-                marginTop: 10,
+                marginTop: 25,
                 fontSize: 18,
                 fontWeight: '600',
                 color: colors.SKY_BLUE 
