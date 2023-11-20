@@ -13,7 +13,7 @@ function App() {
     case '/':
       Component = HomeScreen;
       break;
-    case '/AimTraier':
+    case '/AimTrainer':
       Component = AimTrainerScreen;
       break;
     case '/ClickSpeed':

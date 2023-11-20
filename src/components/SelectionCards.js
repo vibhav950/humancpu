@@ -27,12 +27,12 @@
                 alignItems: 'center',
                 width: 1150,
                 height: 'auto',
-                margin: 120,
+                margin_top: 120,
                 margin: 40
             },
             card: {
                 width: 250,
-                height: 250,
+                height: 300,
                 borderRadius: 25,
                 alignItems: 'center',
                 textAlign: 'center',
@@ -74,7 +74,6 @@
                         boxShadow: cardHover.card1
                         ? '0 4px 25px 0 rgba(0, 0, 0, 0.7)'
                         : '0 4px 15px -5px rgba(0, 0, 0, 0.7)',
-                        transition: 'box-shadow 0.3s ease',
                         transform: cardHover.card1
                         ? 'translateY(-10px)'
                         : 'translateY(0)',
@@ -106,7 +105,6 @@
                         boxShadow: cardHover.card2
                         ? '0 4px 25px 0 rgba(0, 0, 0, 0.7)'
                         : '0 4px 15px -5px rgba(0, 0, 0, 0.7)',
-                        transition: 'box-shadow 0.3s ease',
                         transform: cardHover.card2
                         ? 'translateY(-10px)'
                         : 'translateY(0)',
@@ -169,7 +167,6 @@
                         boxShadow: cardHover.card4
                         ? '0 4px 25px 0 rgba(0, 0, 0, 0.7)'
                         : '0 4px 15px -5px rgba(0, 0, 0, 0.7)',
-                        transition: 'box-shadow 0.3s ease',
                         transform: cardHover.card4
                         ? 'translateY(-10px)'
                         : 'translateY(0)',
