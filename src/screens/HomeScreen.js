@@ -9,6 +9,7 @@ import { colors } from '../styles/colors';
 
 export default function HomeScreen() {
   const [priofileSubTextHover, setProfileSubTextHover] = useState(false);
+  const [logoutHover, setLogoutHover] = useState(false);
 
   const styles = {
     rootContainer: {
@@ -69,6 +70,25 @@ export default function HomeScreen() {
       height: 78,
       widhth: 'auto',
     },
+    logoutBtn: {
+      border: 0,
+      backgroundColor: '#00AEEF',
+      color: 'black',
+      fontSize: 12,
+      fontWeight: '600',
+      padding: '12px 15px',
+      marginTop: '20px',
+      marginLeft: '-110px',
+      borderRadius: '10px',
+      alignItems: 'center',
+      width: 50,
+      height: 4,
+      display: 'flex',
+      justifyContent: 'space-around',
+      boxShadow: '0 4px 15px -5px rgba(0, 0, 0, 0.7)',
+      padding: '8px',
+      paddingBottom: '9px'
+    }
   };
 
   return (
@@ -89,14 +109,16 @@ export default function HomeScreen() {
         >
             {users[0].name.length > 7 ? users[0].name.slice(0, 7) + '...' : users[0].name}
         </div>
-        <div
-        style={styles.profileSubText}
-        onMouseEnter={() => setProfileSubTextHover(true)}
-        onMouseLeave={() => setProfileSubTextHover(false)}
-        onClick={() => {/* TODO: Logout */}}
+        <button
+        style={{
+          ...styles.logoutBtn,
+          backgroundColor: logoutHover ? colors.RED : '#3A424F'
+          }}
+          onMouseEnter={() => setLogoutHover(true)}
+          onMouseLeave={() => setLogoutHover(false)}
         >
-            {'Logout'}
-        </div>
+          Logout
+        </button>
         <img
           style={styles.profileImage}
           src={users[0].profileIcon}
