@@ -11,6 +11,9 @@ function App() {
 
   switch (window.location.pathname) {
     case '/':
+        Component = LoginScreen;
+        break;
+    case '/HomeScreen':
       Component = HomeScreen;
       break;
     case '/AimTrainer':

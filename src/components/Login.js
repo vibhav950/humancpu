@@ -1,51 +1,39 @@
-import React from "react";
-
-function LoginForm() {
-  const [state, setState] = React.useState({
-    email: "",
-    password: ""
-  });
-  const handleChange = evt => {
-    const value = evt.target.value;
-    setState({
-      ...state,
-      [evt.target.name]: value
-    });
-  };
-
-  const handleOnSubmit = evt => {
-    evt.preventDefault();
-
-    for (const key in state) {
-      setState({
-        ...state,
-        [key]: ""
-      });
+import { useState } from 'react'
+function Login() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const handleOnSubmit = async (e) => {
+    e.preventDefault();
+    let result = await fetch(
+        'http://localhost:5000/', {
+          method: "post",
+          body: JSON.stringify({ name, email }),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+    result = await result.json();
+    console.warn(result);
+    if (result) {
+      alert("Data saved succesfully");
+      setEmail("");
+      setName("");
     }
-  };
-
+  }
   return (
-    <div className="form-container sign-in-container">
-      <form onSubmit={handleOnSubmit}>
-        <h1>Login</h1>
-        <input
-          type="email"
-          placeholder="Email"
-          name="email"
-          value={state.email}
-          onChange={handleChange}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={state.password}
-          onChange={handleChange}
-        />
-        <button>Login</button>
-      </form>
-    </div>
+      <>
+        <h1>This is React WebApp </h1>
+        <form action="">
+          <input type="text" placeholder="name"
+                 value={name} onChange={(e) => setName(e.target.value)} />
+          <input type="email" placeholder="email"
+                 value={email} onChange={(e) => setEmail(e.target.value)} />
+          <button type="submit"
+                  onClick={handleOnSubmit}>submit</button>
+        </form>
+
+      </>
   );
 }
 
-export default LoginForm;
+export default Login;
