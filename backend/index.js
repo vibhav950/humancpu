@@ -29,7 +29,27 @@ const UserSchema = new mongoose.Schema({
     },
 });
 
+const ScoreSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+    },
+    score: {
+        type: Number,
+        required: true,
+    },
+    test: {
+    type: String,
+        required: true,
+    },
+    date: {
+        type: Date,
+        default: Date.now,
+    },
+    } );
+
 const User = mongoose.model('users', UserSchema);
+const Score = mongoose.model('scores', ScoreSchema);
 
 app.post("/", async (req, resp) => {
     try {
@@ -58,6 +78,58 @@ app.post("/", async (req, resp) => {
             resp.json({ success: true, message: "User registered successfully", data: result.toObject() });
         }
     } catch (e) {
+        console.error(e);
+        resp.status(500).json({ success: false, message: "Something Went Wrong" });
+    }
+});
+
+app.post("/AimTrainer", async (req, resp) => {
+    try {
+        const { name, score } = req.body;
+        resp.json({ success: true, message: "Score saved successfully" });
+        const newScore = new Score({ name, score , test: "AimTrainer"});
+        resp.json({ success: true, message: "Score saved successfully", data: newScore.toObject() });
+    }
+     catch (e) {
+        console.error(e);
+        resp.status(500).json({ success: false, message: "Something Went Wrong" });
+    }
+});
+
+app.post("/ClickSpeed", async (req, resp) => {
+    try {
+        const { name, score } = req.body;
+        resp.json({ success: true, message: "Score saved successfully" });
+        const newScore = new Score({ name, score , test: "ClickSpeed"});
+        resp.json({ success: true, message: "Score saved successfully", data: newScore.toObject() });
+    }
+    catch (e) {
+        console.error(e);
+        resp.status(500).json({ success: false, message: "Something Went Wrong" });
+    }
+});
+
+app.post("/ReactionTime", async (req, resp) => {
+    try {
+        const { name, score } = req.body;
+        resp.json({ success: true, message: "Score saved successfully" });
+        const newScore = new Score({ name, score , test: "ReactionTime"});
+        resp.json({ success: true, message: "Score saved successfully", data: newScore.toObject() });
+    }
+    catch (e) {
+        console.error(e);
+        resp.status(500).json({ success: false, message: "Something Went Wrong" });
+    }
+});
+
+app.post("/TypingSpeed", async (req, resp) => {
+    try {
+        const { name, score } = req.body;
+        resp.json({ success: true, message: "Score saved successfully" });
+        const newScore = new Score({ name, score , test: "TypingSpeed"});
+        resp.json({ success: true, message: "Score saved successfully", data: newScore.toObject() });
+    }
+    catch (e) {
         console.error(e);
         resp.status(500).json({ success: false, message: "Something Went Wrong" });
     }
