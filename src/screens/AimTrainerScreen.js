@@ -10,8 +10,8 @@ export default function AimTrainerScreen() {
     if (canvasRef.current) {
       const canvasRect = canvasRef.current.getBoundingClientRect();
       return {
-        left: Math.random() * (canvasRect.width - 50),
-        top: Math.random() * (canvasRect.height - 50)
+        left: Math.random() * (canvasRect.width - 75),
+        top: Math.random() * (canvasRect.height - 75)
       };
     }
     return { left: 0, top: 0 };
@@ -58,9 +58,9 @@ export default function AimTrainerScreen() {
 
     const isClickInside =
       clickX >= target.left &&
-      clickX <= target.left + 50 &&
+      clickX <= target.left + 75 &&
       clickY >= target.top &&
-      clickY <= target.top + 50;
+      clickY <= target.top + 75;
 
     if (isGameStarted && isClickInside) {
       setScore((prevScore) => prevScore + 1);
@@ -106,6 +106,12 @@ export default function AimTrainerScreen() {
         </div>
       )}
       {isGameStarted && (
+        <div>
+          <div style={{display: "flex"}}>
+            <p style={{marginRight: "500px"}}>Score: {score} </p>
+            <p>Time Left: {timeLeft}</p>
+          </div>
+
         <div
           onClick={handleClick}
           style={{
@@ -116,19 +122,43 @@ export default function AimTrainerScreen() {
           }}
           ref={(ref) => (canvasRef.current = ref)}
         >
-          <p>Score: {score}</p>
-          <p>Time Left: {timeLeft} seconds</p>
-          <div
-            style={{
-              position: "absolute",
-              left: target.left,
-              top: target.top,
-              width: "50px",
-              height: "50px",
-              backgroundColor: "red",
-              borderRadius: "50%"
-            }}
-          />
+<div className="bullseye" style={{
+  width: '75px',
+  height: '75px',
+  backgroundColor: 'white',
+  borderRadius: '50%',
+  position: 'absolute',
+  top: target.top,
+  left: target.left
+}}>
+    <div className="circle" style={{
+      width: '100%',
+      height: '100%',
+      backgroundColor: 'red',
+      borderRadius: '50%',
+    }}>
+        <div className="inner-circle" style={{
+          width: '80%',
+          height: '80%',
+          backgroundColor: 'white',
+          borderRadius: '50%',
+          position: 'absolute',
+          top: '10%',
+          left: '10%',
+        }}>
+            <div className="center-circle" style={{
+              width: '60%',
+              height: '60%',
+              backgroundColor: 'red',
+              borderRadius: '50%',
+              position: 'absolute',
+              top: '20%',
+              left: '20%',
+            }}></div>
+        </div>
+    </div>
+</div>
+        </div>
         </div>
       )}
       {!isGameStarted && timeLeft === 0 && (

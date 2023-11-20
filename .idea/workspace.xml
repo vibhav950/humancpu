@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e2f2e6bc-950d-4352-a296-e0e5e495ae94" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/AimTrainerScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/AimTrainerScreen.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +60,7 @@
       <workItem from="1700406806503" duration="6961000" />
       <workItem from="1700444061746" duration="1820000" />
       <workItem from="1700447478934" duration="400000" />
-      <workItem from="1700447891536" duration="573000" />
+      <workItem from="1700447891536" duration="2704000" />
     </task>
     <servers />
   </component>
