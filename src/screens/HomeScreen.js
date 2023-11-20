@@ -2,10 +2,21 @@ import React, { useState } from 'react';
 import { users } from '../data/userData';
 import SelectionCards from '../components/SelectionCards';
 import { colors } from '../styles/colors';
+import {useLocation, useNavigate} from "react-router-dom";
 
 export default function HomeScreen() {
-  const [logoutHover, setLogoutHover] = useState(false);
 
+  const [logoutHover, setLogoutHover] = useState(false);
+    const navigate = useNavigate();
+    const {state} = useLocation();
+    console.log(state);
+    if(state){
+    var {name} = state;
+    if(name===undefined){
+        name="Anonymous";
+    }}else{
+        name="Anonymous";
+    }
   const styles = {
     rootContainer: {
         padding: 10,
@@ -80,7 +91,6 @@ export default function HomeScreen() {
       display: 'flex',
       justifyContent: 'space-around',
       boxShadow: '0 4px 15px -5px rgba(0, 0, 0, 0.7)',
-      padding: '8px',
       paddingBottom: '9px'
     }
   };
@@ -99,7 +109,7 @@ export default function HomeScreen() {
         <div
         style={styles.profileText}
         >
-            {users[0].name.length > 7 ? users[0].name.slice(0, 7) + '...' : users[0].name}
+            {name.length > 7 ? name.slice(0, 7) + '...' : name}
         </div>
         <button
         style={{
@@ -108,7 +118,7 @@ export default function HomeScreen() {
           }}
         onMouseEnter={() => setLogoutHover(true)}
         onMouseLeave={() => setLogoutHover(false)}
-        onClick={() => {console.log('Clicked logout')}}
+        onClick={() => {navigate('/');}}
         >
           Logout
         </button>
@@ -119,7 +129,7 @@ export default function HomeScreen() {
         />
       </div>
 
-      <SelectionCards/>
+      <SelectionCards name={name}/>
     </div>
   );
 }

@@ -1,8 +1,9 @@
     import React, { useState } from 'react';
     import { colors } from '../styles/colors';
-
-    export default function SelectionCards() {
-
+    import {useNavigate} from 'react-router-dom';
+    export default function SelectionCards(name) {
+        name = name.name;
+        const navigate = useNavigate();
         const [cardHover, setCardHover] = useState({
             card1: false,
             card2: false,
@@ -57,16 +58,20 @@
                 marginTop: 25,
                 fontSize: 18,
                 fontWeight: '600',
-                color: colors.SKY_BLUE 
+                color: colors.SKY_BLUE
             }
         }
+        function clickhandle(name, path){
+            navigate(path, {state: { name } } );
+        }
+
 
         return (
             <div id="root"
             style={styles.parentContainer}
             onClick={() => {}}
             >
-                <a href="/AimTrainer" style={{textDecoration: 'none'}}>
+                <div onClick={() => clickhandle(name, '/AimTrainer')}>
                     <div
                     style={{
                         ...styles.card,
@@ -90,14 +95,14 @@
                         <div style={styles.cardTitle}>
                             {'Aim Trainer'}
                         </div>
-                        
+
                         <div style={styles.cardSubTitle}>
                             {'How good would you be as a pro CSGO player?'}
                         </div>
                     </div>
-                </a>
+                </div>
 
-                <a href="/ClickSpeed" style={{textDecoration: 'none'}}>
+                <div onClick={() => clickhandle(name, '/ClickSpeed')}>
                     <div
                     style={{
                         ...styles.card,
@@ -126,9 +131,9 @@
                             {'How fast can you spam your left mouse button?'}
                         </div>
                     </div>
-                </a>
 
-                <a href="/ReactionTime" style={{textDecoration: 'none'}}>
+                </div>
+                <div onClick={() => clickhandle(name, '/ReactionTime')}>
                     <div
                     style={{
                         ...styles.card,
@@ -157,9 +162,8 @@
                             {'How fast are your visual reflexes?'}
                         </div>
                     </div>
-                </a>
-
-                <a href="/TypingSpeed" style={{textDecoration: 'none'}}>
+                </div>
+                <div onClick={() => clickhandle(name, '/TypingSpeed')}>
                     <div
                     style={{
                         ...styles.card,
@@ -183,12 +187,12 @@
                         <div style={styles.cardTitle}>
                             {'Typing Speed'}
                         </div>
-                        
+
                         <div style={styles.cardSubTitle}>
                             {'Are you the fastest typist in the room?'}
                         </div>
                     </div>
-                </a>
+                </div>
             </div>
         );
     }

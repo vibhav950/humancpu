@@ -1,9 +1,21 @@
 // Canvas.js
 import React, {useState, useEffect, useRef, useCallback} from "react";
 import '../styles/aimTrainerScreen.css';
-import { useNavigate } from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
+import {colors} from "../styles/colors";
+import {users} from "../data/userData";
 
 export default function AimTrainerScreen() {
+    const [logoutHover, setLogoutHover] = useState(false);
+    const {state} = useLocation();
+    if(state){
+        var {name} = state;
+        if(name===undefined){
+            name="Anonymous";
+        }}else{
+        name="Anonymous";
+    }
+    console.log('aim',state);
     const canvasRef = useRef(null);
     const navigate = useNavigate(); // Initialize useHistory hook
 
@@ -37,8 +49,6 @@ export default function AimTrainerScreen() {
     };
 
     useEffect(() => {
-        // Additional game initialization logic can be added here
-        // This useEffect runs when isGameStarted changes
         if (isGameStarted) {
             // For example, you can reset score, time, etc.
             setScore(0);
@@ -69,6 +79,18 @@ export default function AimTrainerScreen() {
             setTarget(generateRandomTarget());
         }
     };
+    const submitresult = async (score) => {
+        var test="AimTrainer";
+        const response = await fetch('http://localhost:5000/AimTrainer', {
+            method: "post",
+            body: JSON.stringify({ name, score, test}),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        alert("Score submitted successfully");
+        navigate('/Home', {state: state} );
+    }
 
     useEffect(() => {
         // Set a timer to update the target and decrease timeLeft every 60 seconds
@@ -92,6 +114,7 @@ export default function AimTrainerScreen() {
 
         // Stop the game when timeLeft becomes 0
         if (timeLeft === 0) {
+
             setIsGameStarted(false);
         }
 
@@ -105,14 +128,93 @@ export default function AimTrainerScreen() {
         left: 0,
         margin: 15,
       },
+        profileContainer: {
+            position: 'fixed',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            top: 0,
+            right: 0,
+            width: 150,
+            height: 45,
+            borderRadius: 50,
+            backgroundColor: colors.GREY,
+            color: colors.SKY_BLUE,
+            margin: 15,
+            boxShadow: '0 4px 15px -5px rgba(0, 0, 0, 0.7)',
+        },
+        profileImage: {
+            // postion: 'relative',
+            width: 35,
+            height: 35,
+            borderRadius: 50,
+            marginRight: 5
+        },
+        profileText: {
+            position: 'relative',
+            marginLeft: 20,
+            marginTop: -17.5,
+            fontSize: 18,
+            fontWeight: '600'
+        },
+        profileSubText: {
+            position: 'absolute',
+            marginLeft: 20,
+            marginTop: 20,
+            fontSize: 15,
+            fontWeight: '500',
+            color: colors.RED,
+            cursor: 'pointer',
+        },
+        logoutBtn: {
+            border: 0,
+            backgroundColor: '#00AEEF',
+            color: 'black',
+            fontSize: 12,
+            fontWeight: '600',
+            padding: '12px 15px',
+            marginTop: '20px',
+            marginLeft: '-110px',
+            borderRadius: '10px',
+            alignItems: 'center',
+            width: 50,
+            height: 4,
+            display: 'flex',
+            justifyContent: 'space-around',
+            boxShadow: '0 4px 15px -5px rgba(0, 0, 0, 0.7)',
+            paddingBottom: '9px'
+        }
     }
 
     const handleHomeButtonClick = () => {
-        navigate('/Home') // Navigate to the home screen when headerIcon is clicked
+        navigate('/Home', {state: state} ); // Navigate to the home screen when headerIcon is clicked
       }
 
     return (
         <div>
+            <div id="profileContainer" style={styles.profileContainer}>
+                <div
+                    style={styles.profileText}
+                >
+                    {name.length > 7 ? name.slice(0, 7) + '...' : name}
+                </div>
+                <button
+                    style={{
+                        ...styles.logoutBtn,
+                        backgroundColor: logoutHover ? colors.RED : 'grey'
+                    }}
+                    onMouseEnter={() => setLogoutHover(true)}
+                    onMouseLeave={() => setLogoutHover(false)}
+                    onClick={() => {navigate('/');}}
+                >
+                    Logout
+                </button>
+                <img
+                    style={styles.profileImage}
+                    src={users[0].profileIcon}
+                    alt="Profile"
+                />
+            </div>
             {/* <a href="/" style={{ textDecoration: 'none' }}> */}
               <div id="homeIcon" style={styles.headerContainer} onClick={handleHomeButtonClick}>
               <img
@@ -220,7 +322,9 @@ export default function AimTrainerScreen() {
             </div>
             {!isGameStarted && timeLeft === 0 && (
                 <div>
-                    <p style={{color: '#FF7B91', fontSize: 22, fontWeight: '600', marginBottom: 50}}>Game Over</p>
+                    <p style={{color: '#FF7B91', fontSize: 22, fontWeight: '600', marginBottom: 50}}>Game Over!</p>
+                    <p style={{color: '#FF7B91', fontSize: 22, fontWeight: '600', marginBottom: 50}}>Score: {score}</p>
+                    <button className="aimtr" onClick={()=>{submitresult(score);}}>Submit Score</button>
                     <button className="aimtr" onClick={restartGame}>Restart</button>
                 </div>
             )}

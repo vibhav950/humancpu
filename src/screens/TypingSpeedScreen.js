@@ -1,10 +1,12 @@
-import React, { Component } from "react";
+import React, {Component, useState} from "react";
 import { generate } from "random-words";
 import "../styles/typingSpeedScreen.css";
-import { useNavigate } from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
+import {colors} from "../styles/colors";
+import {users} from "../data/userData";
 
-const N_WORDS = 40;
-
+const N_WORDS = 15;
+var name;
 const styles = {
   headerContainer: {
     position: 'fixed',
@@ -12,12 +14,102 @@ const styles = {
     left: 0,
     margin: 15,
   },
+  profileContainer: {
+    position: 'fixed',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    top: 0,
+    right: 0,
+    width: 150,
+    height: 45,
+    borderRadius: 50,
+    backgroundColor: colors.GREY,
+    color: colors.SKY_BLUE,
+    margin: 15,
+    boxShadow: '0 4px 15px -5px rgba(0, 0, 0, 0.7)',
+  },
+  profileImage: {
+    // postion: 'relative',
+    width: 35,
+    height: 35,
+    borderRadius: 50,
+    marginRight: 5
+  },
+  profileText: {
+    position: 'relative',
+    marginLeft: 20,
+    marginTop: -17.5,
+    fontSize: 18,
+    fontWeight: '600'
+  },
+  profileSubText: {
+    position: 'absolute',
+    marginLeft: 20,
+    marginTop: 20,
+    fontSize: 15,
+    fontWeight: '500',
+    color: colors.RED,
+    cursor: 'pointer',
+  },
+  logoutBtn: {
+    border: 0,
+    backgroundColor: '#00AEEF',
+    color: 'black',
+    fontSize: 12,
+    fontWeight: '600',
+    padding: '12px 15px',
+    marginTop: '20px',
+    marginLeft: '-110px',
+    borderRadius: '10px',
+    alignItems: 'center',
+    width: 50,
+    height: 4,
+    display: 'flex',
+    justifyContent: 'space-around',
+    boxShadow: '0 4px 15px -5px rgba(0, 0, 0, 0.7)',
+    paddingBottom: '9px'
+  }
 };
 
 export default function TypingSpeedScreenWrapper (){
+  const [logoutHover, setLogoutHover] = useState(false);
+  const {state} = useLocation();
+  if(state){
+    name = state.name;
+    if(name===undefined){
+      name="Anonymous";
+    }}else{
+    name="Anonymous";
+  }
   const navigate = useNavigate(); // extract navigation prop here 
-  
-   return <TypingSpeedScreen navigation={navigate} /> //pass to your component.
+
+  function toHome(){
+    navigate('/Home', {state: state} );
+  }
+   return <div><div id="profileContainer" style={styles.profileContainer}>
+     <div
+         style={styles.profileText}
+     >
+       {name.length > 7 ? name.slice(0, 7) + '...' : name}
+     </div>
+     <button
+         style={{
+           ...styles.logoutBtn,
+           backgroundColor: logoutHover ? colors.RED : 'grey'
+         }}
+         onMouseEnter={() => setLogoutHover(true)}
+         onMouseLeave={() => setLogoutHover(false)}
+         onClick={() => {navigate('/');}}
+     >
+       Logout
+     </button>
+     <img
+         style={styles.profileImage}
+         src={users[0].profileIcon}
+         alt="Profile"
+     />
+   </div><TypingSpeedScreen navigation={toHome} /></div> //pass to your component.
 };
 
 
@@ -39,7 +131,19 @@ class TypingSpeedScreen extends Component {
     started: false,
     progress: 0,
   };
-
+  async submitresult (score){
+    var test="TypingSpeed";
+    const response = await fetch('http://localhost:5000/TypingSpeed', {
+      method: "post",
+      body: JSON.stringify({ name, score, test}),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    alert("Score submitted successfully");
+    const Home = this.props.navigation;
+    Home();
+  }
   componentDidMount() {
     /* update the timer every second */
     this.timerInterval = setInterval(this.calculateWPM, 1000);
@@ -143,13 +247,13 @@ class TypingSpeedScreen extends Component {
       progress
     } = this.state;
 
-    const { navigation } = this.props;
+    const toHome = this.props.navigation;
 
     if (!started)
       return (
         <div className="container-1">
           {/* <a href="/" style={{ textDecoration: 'none' }}> */}
-            <div id="homeIcon" style={styles.headerContainer} onClick={() => {navigation('/Home')}}>
+            <div id="homeIcon" style={styles.headerContainer} onClick={() => {toHome();}}>
               <img
               src={require('../assets/icons/logo.png')}
               style={{height: 78, width: 'auto'}}
@@ -184,7 +288,7 @@ class TypingSpeedScreen extends Component {
             </button>
 
             {/* <a href="/" style={{textDecoration: 'none'}}> */}
-              <button className="start-btn" onClick={() => {navigation('/Home')}}>
+              <button className="start-btn" onClick={() => {toHome();}}>
                 <img
                 style={{width: 25, height: 25, marginRight: 10}}
                 src={require('../assets/icons/home-grey.png')}
@@ -216,8 +320,15 @@ class TypingSpeedScreen extends Component {
               Retry
             </button>
 
+              <button className="end-btn" onClick={()=>{this.submitresult(wpm);}}>
+                <img
+                    style={{width: 25, height: 25, marginRight: 0}}
+                />
+                Submit
+              </button>
+
             {/* <a href="/" style={{textDecoration: 'none'}}> */}
-              <button className="end-btn" onClick={() => {navigation('/Home')}}>
+              <button className="end-btn" onClick={() => {toHome();}}>
                 <img
                 style={{width: 25, height: 25, marginRight: 0}}
                 src={require('../assets/icons/home-grey.png')}
@@ -316,7 +427,7 @@ class TypingSpeedScreen extends Component {
               </button>
 
             {/* <a href="/" style={{textDecoration: 'none'}}> */}
-              <button className="container-2-btn" onClick={() => {navigation('/Home')}}>
+              <button className="container-2-btn" onClick={() => {toHome();}}>
                 <img
                 style={{width: 25, height: 25, marginRight: 10}}
                 src={require('../assets/icons/home-grey.png')}

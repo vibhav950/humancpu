@@ -7,6 +7,13 @@
     <list default="true" id="e2f2e6bc-950d-4352-a296-e0e5e495ae94" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SelectionCards.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SelectionCards.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/AimTrainerScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/AimTrainerScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/ClickSpeedScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/ClickSpeedScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/HomeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/HomeScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/LoginScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/LoginScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/ReactionTimeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/ReactionTimeScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/TypingSpeedScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/TypingSpeedScreen.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +68,8 @@
       <workItem from="1700444061746" duration="1820000" />
       <workItem from="1700447478934" duration="400000" />
       <workItem from="1700447891536" duration="10839000" />
+      <workItem from="1700486893667" duration="55000" />
+      <workItem from="1700487027352" duration="5570000" />
     </task>
     <servers />
   </component>

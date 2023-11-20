@@ -86,8 +86,8 @@ app.post("/", async (req, resp) => {
 app.post("/AimTrainer", async (req, resp) => {
     try {
         const { name, score } = req.body;
-        resp.json({ success: true, message: "Score saved successfully" });
         const newScore = new Score({ name, score , test: "AimTrainer"});
+        const result = await newScore.save();
         resp.json({ success: true, message: "Score saved successfully", data: newScore.toObject() });
     }
      catch (e) {
@@ -99,8 +99,8 @@ app.post("/AimTrainer", async (req, resp) => {
 app.post("/ClickSpeed", async (req, resp) => {
     try {
         const { name, score } = req.body;
-        resp.json({ success: true, message: "Score saved successfully" });
         const newScore = new Score({ name, score , test: "ClickSpeed"});
+        const result = await newScore.save();
         resp.json({ success: true, message: "Score saved successfully", data: newScore.toObject() });
     }
     catch (e) {
@@ -112,9 +112,11 @@ app.post("/ClickSpeed", async (req, resp) => {
 app.post("/ReactionTime", async (req, resp) => {
     try {
         const { name, score } = req.body;
-        resp.json({ success: true, message: "Score saved successfully" });
         const newScore = new Score({ name, score , test: "ReactionTime"});
-        resp.json({ success: true, message: "Score saved successfully", data: newScore.toObject() });
+        const result = await newScore.save();
+        resp.json({ success: true, message: "Score saved successfully" });
+        console.log(newScore
+        );
     }
     catch (e) {
         console.error(e);
@@ -125,8 +127,8 @@ app.post("/ReactionTime", async (req, resp) => {
 app.post("/TypingSpeed", async (req, resp) => {
     try {
         const { name, score } = req.body;
-        resp.json({ success: true, message: "Score saved successfully" });
         const newScore = new Score({ name, score , test: "TypingSpeed"});
+        const result = await newScore.save();
         resp.json({ success: true, message: "Score saved successfully", data: newScore.toObject() });
     }
     catch (e) {
