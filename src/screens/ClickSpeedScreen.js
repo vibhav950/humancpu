@@ -171,7 +171,7 @@ const ClickSpeedScreen = () => {
 
   return (
     <div className='click-counter-container'>
-        <div id="profileContainer" style={styles.profileContainer}>
+        <div id="profileContainer" style={styles.profileContainer} onClick={() => {navigate('/Leaderboard', {state: state});}}>
             <div
                 style={styles.profileText}
             >
@@ -184,7 +184,7 @@ const ClickSpeedScreen = () => {
                 }}
                 onMouseEnter={() => setLogoutHover(true)}
                 onMouseLeave={() => setLogoutHover(false)}
-                onClick={() => {navigate('/');}}
+                onClick={(event) => {event.stopPropagation();navigate('/');}}
             >
                 Logout
             </button>

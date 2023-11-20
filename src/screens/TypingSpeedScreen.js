@@ -84,10 +84,13 @@ export default function TypingSpeedScreenWrapper (){
   }
   const navigate = useNavigate(); // extract navigation prop here 
 
+  function toLeaderboard(){
+    navigate('/Leaderboard', {state: state} );
+  }
   function toHome(){
     navigate('/Home', {state: state} );
   }
-   return <div><div id="profileContainer" style={styles.profileContainer}>
+   return <div><div id="profileContainer" style={styles.profileContainer} onClick={() => {navigate('/Leaderboard', {state: state});}}>
      <div
          style={styles.profileText}
      >
@@ -100,7 +103,7 @@ export default function TypingSpeedScreenWrapper (){
          }}
          onMouseEnter={() => setLogoutHover(true)}
          onMouseLeave={() => setLogoutHover(false)}
-         onClick={() => {navigate('/');}}
+         onClick={(event) => {event.stopPropagation();navigate('/');}}
      >
        Logout
      </button>
@@ -109,7 +112,7 @@ export default function TypingSpeedScreenWrapper (){
          src={users[0].profileIcon}
          alt="Profile"
      />
-   </div><TypingSpeedScreen navigation={toHome} /></div> //pass to your component.
+   </div><TypingSpeedScreen navigation={toHome} leader={toLeaderboard}/></div> //pass to your component.
 };
 
 
@@ -248,6 +251,7 @@ class TypingSpeedScreen extends Component {
     } = this.state;
 
     const toHome = this.props.navigation;
+    const toLeaderboard = this.props.leader;
 
     if (!started)
       return (

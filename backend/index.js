@@ -136,6 +136,15 @@ app.post("/TypingSpeed", async (req, resp) => {
         resp.status(500).json({ success: false, message: "Something Went Wrong" });
     }
 });
+app.get("/data", async (req, res, next) => {
+    try {
+        const data = await Score.find();
+        res.status(200).send(data);
+    } catch (err) {
+        console.log(err);
+        res.status(500).send();
+    }
+});
 
 const PORT = 5000;
 app.listen(PORT, () => console.log(`App listening at port ${PORT}`));

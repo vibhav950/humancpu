@@ -6,6 +6,7 @@ import AimTrainerScreen from './screens/AimTrainerScreen';
 import ClickSpeedScreen from './screens/ClickSpeedScreen';
 import ReactionTimeScreen from './screens/ReactionTimeScreen';
 import TypingSpeedScreen from './screens/TypingSpeedScreen';
+import Leaderboard from "./screens/Leaderboard";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/ClickSpeed" element={<ClickSpeedScreen />} />
         <Route path="/ReactionTime" element={<ReactionTimeScreen />} />
         <Route path="/TypingSpeed" element={<TypingSpeedScreen />} />
+        <Route path="/Leaderboard" element={<Leaderboard />} />
       </Routes>
     </Router>
   );

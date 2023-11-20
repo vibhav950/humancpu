@@ -192,7 +192,7 @@ export default function AimTrainerScreen() {
 
     return (
         <div>
-            <div id="profileContainer" style={styles.profileContainer}>
+            <div id="profileContainer" style={styles.profileContainer} onClick={() => {navigate('/Leaderboard', {state: state});}}>
                 <div
                     style={styles.profileText}
                 >
@@ -205,7 +205,7 @@ export default function AimTrainerScreen() {
                     }}
                     onMouseEnter={() => setLogoutHover(true)}
                     onMouseLeave={() => setLogoutHover(false)}
-                    onClick={() => {navigate('/');}}
+                    onClick={(event) => {event.stopPropagation();navigate('/');}}
                 >
                     Logout
                 </button>

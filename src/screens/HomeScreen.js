@@ -105,7 +105,7 @@ export default function HomeScreen() {
         />
       </div>
 
-      <div id="profileContainer" style={styles.profileContainer}>
+      <div id="profileContainer" style={styles.profileContainer} onClick={() => {navigate('/Leaderboard', {state: state});}}>
         <div
         style={styles.profileText}
         >
@@ -118,7 +118,7 @@ export default function HomeScreen() {
           }}
         onMouseEnter={() => setLogoutHover(true)}
         onMouseLeave={() => setLogoutHover(false)}
-        onClick={() => {navigate('/');}}
+        onClick={(event) => {event.stopPropagation();navigate('/');}}
         >
           Logout
         </button>
