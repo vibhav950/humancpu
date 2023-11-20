@@ -1,59 +1,67 @@
 const mongoose = require('mongoose');
-mongoose
-    .connect('mongodb://127.0.0.1:27017/HumanCpu')
-    .catch (error => console.log(error));
+const express = require('express');
+const cors = require("cors");
 
-// Schema for users of app
+const app = express();
+const url = "mongodb://localhost:27017/";
+
+mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true, dbName: 'HumanCpu' });
+
+app.use(express.json());
+app.use(cors());
+
+app.get("/", (req, resp) => {
+    resp.json({ message: "App is Working" });
+});
+
 const UserSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
     },
-    email: {
+    password: {
         type: String,
         required: true,
-        unique: true,
     },
     date: {
         type: Date,
         default: Date.now,
     },
 });
+
 const User = mongoose.model('users', UserSchema);
-User.createIndexes();
 
-// For backend and express
-const express = require('express');
-const app = express();
-const cors = require("cors");
-console.log("App listen at port 5000");
-app.use(express.json());
-app.use(cors());
-app.get("/", (req, resp) => {
-
-    resp.send("App is Working");
-    // You can check backend is working or not by
-    // entering http://loacalhost:5000
-
-    // If you see App is working means
-    // backend working properly
-});
-
-app.post("/lsp", async (req, resp) => {
+app.post("/", async (req, resp) => {
     try {
-        const user = new User(req.body);
-        let result = await user.save();
-        result = result.toObject();
-        if (result) {
-            delete result.password;
-            resp.send(req.body);
-            console.log(result);
-        } else {
-            console.log("User already register");
-        }
+        const { name, password, loginMode } = req.body;
 
+        if (loginMode) {
+            // Login
+            const user = await User.findOne({ name, password });
+
+            if (user) {
+                resp.json({ success: true, message: "Login successful" });
+            } else {
+                resp.status(401).json({ success: false, message: "Invalid credentials" });
+            }
+        } else {
+            // Signup
+            const existingUser = await User.findOne({ name });
+
+            if (existingUser) {
+                return resp.status(400).json({ success: false, message: "User already exists" });
+            }
+
+            const newUser = new User({ name, password });
+            const result = await newUser.save();
+
+            resp.json({ success: true, message: "User registered successfully", data: result.toObject() });
+        }
     } catch (e) {
-        resp.send("Something Went Wrong");
+        console.error(e);
+        resp.status(500).json({ success: false, message: "Something Went Wrong" });
     }
 });
-app.listen(5000);
+
+const PORT = 5000;
+app.listen(PORT, () => console.log(`App listening at port ${PORT}`));
