@@ -184,7 +184,7 @@ const Leaderboard = () => {
             alt="Profile"
         />
     </div>
-        <div style={{ backgroundColor: '#3a3b3c', padding: '20px', borderRadius: '10px', maxWidth: '700px', margin: 'auto' }}>
+        <div style={{ backgroundColor: '#3a3b3c', padding: '20px', borderRadius: '15px', maxWidth: '700px', margin: 'auto' }}>
             <h1 style={{ color: '#00AEEF', fontSize: '48px', marginBottom: '20px' }}>Leaderboard</h1>
             <div style={{ marginBottom: '20px' }}>
                 <label style={{ color: '#00AEEF', fontSize: '24px' }}>Select Test Type:</label>
@@ -203,9 +203,9 @@ const Leaderboard = () => {
             </div>
             {selectedTestType && (
                 <ul style={{ listStyleType: 'none', padding: '0', margin: '0', fontSize: '24px', color: '#00AEEF' }}>
-                    {sortedArrays[selectedTestType].slice(0, 3).map((score) => (
+                    {sortedArrays[selectedTestType].slice(0, 5).map((score) => (
                         <li key={score.id} style={{ marginBottom: '10px' }}>
-                            {score.name}: {score.score} {getScoreLabel(score.test)}
+                             {score.name}: {score.score} {getScoreLabel(score.test)}
                         </li>
                     ))}
                 </ul>
