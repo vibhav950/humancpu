@@ -158,6 +158,7 @@ const Leaderboard = () => {
             <img
                 src={require('../assets/icons/logo.png')}
                 style={styles.mainLogo}
+                alt="Logo"
             />
         </div>
 
